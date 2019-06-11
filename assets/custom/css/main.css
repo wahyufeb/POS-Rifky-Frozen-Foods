@@ -1,0 +1,52 @@
+/* base css */
+.row{
+    padding: 0;
+    margin: 0;
+}
+/* warna teks */
+.pink{
+    color: #FFB4B4
+}
+
+/* Side Menu */
+.side-menu{
+    height: 100vh;
+    background-color: #333;
+}
+
+
+/* Right Menu */
+.right-menu{
+    width: 100%;
+    background-color: #F0F0F0;
+}
+.right-menu .title h1{
+    font-weight: normal;
+}
+.right-menu .title .garis{
+    border: 2px solid pink;
+}
+
+
+.data-barang,.keranjang{
+    background-color: white;
+    height: 420px;
+    border-radius: 10px;
+}
+.data-barang{
+    padding: 20px;
+}
+
+#cari-barang{
+    border-radius: 20px;
+    background-color: #FFB4B4;
+    color: white;
+}
+#cari-barang::placeholder{
+    color: white;
+}
+
+.daftar-barang{
+    height: 330px;
+    overflow: auto;
+}
