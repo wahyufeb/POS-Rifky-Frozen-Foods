@@ -14,14 +14,35 @@
     background-color: #333;
 }
 
+.profile{
+    margin-top: 20px;
+}
+
+.photo img{
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* Right Menu */
 .right-menu{
     width: 100%;
-    background-color: #F0F0F0;
+    background-color: #FFF4F4;
 }
 .right-menu .title h1{
     font-weight: normal;
+}
+.datenow{
+    margin-top: 20px;
 }
 .right-menu .title .garis{
     border: 2px solid pink;
@@ -30,7 +51,7 @@
 
 .data-barang,.keranjang{
     background-color: white;
-    height: 420px;
+    height: 440px;
     border-radius: 10px;
 }
 .data-barang{
@@ -47,6 +68,38 @@
 }
 
 .daftar-barang{
+    height: 350px;
+    overflow: auto;
+}
+
+/* keranjang */
+.data-keranjang{
+    padding: 10px;
+    position: relative;
     height: 330px;
     overflow: auto;
+    margin-top: 20px;
+}
+
+.total{
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #FFB4B4;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+}
+.total h3{
+    font-weight: normal;
+}
+
+.bottom{
+    margin-top: 20px;
+    background-color: white;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 10px;
 }
