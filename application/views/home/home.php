@@ -216,6 +216,7 @@
     <script src="<?=base_url()?>assets/jquery/jquery.js"></script>
     <script>
         $(document).ready(function(){
+            // Async Get Barang
             $.ajax({
                 url:'<?=base_url()?>Home/getBarang',
                 type:'POST',
@@ -234,10 +235,10 @@
                     $('#barang').html(result)
                 }
             })
-
+            // Cari Barang
             $('#cari-barang').on('keyup', function(){
                 let keyword = $('#cari-barang').val();
-
+                // Async Search Barang
                 $.ajax({
                     url:'<?=base_url()?>Home/cariBarang',
                     data:`key=${keyword}`,
