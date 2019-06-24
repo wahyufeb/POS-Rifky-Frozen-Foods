@@ -3,6 +3,13 @@
     padding: 0;
     margin: 0;
 }
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+#editQty:hover{
+    cursor: pointer;
+}
 /* warna teks */
 .pink{
     color: #FFB4B4
@@ -21,15 +28,6 @@
 .photo img{
     border-radius: 50%;
 }
-
-
-
-
-
-
-
-
-
 
 
 

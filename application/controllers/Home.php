@@ -25,6 +25,93 @@ class Home extends CI_Controller {
         echo json_encode($cari);
     }
 
+    // add to Cart
+    function addToCart($kode){
+        $where = array('kode' => $kode);
+        $getKode = $this->M_Home->getKode($where);
+        print_r($getKode);
+        $hasil = $getKode[0];
+        $data = array(
+            'id' => $hasil['kode'],
+            'qty' => 1,
+            'price' => $hasil['harga'],
+            'name' => $hasil['nama']
+        );
+        $this->cart->insert($data);
+        redirect(base_url());
+    }
+
+    // Clear Cart
+    function clearCart(){
+        $this->cart->destroy();
+        redirect(base_url());
+    }
+
+    // Delete Item from Cart
+    function deleteItem($rowid){
+        $data = array(
+            'rowid' => $rowid,
+            'qty' => 0
+        );
+        $this->cart->update($data);
+        redirect(base_url());
+    }
+
+    // Min Qty
+    function minQty($rowid, $qty){
+        $data = array (
+            'rowid' => $rowid,
+            'qty' => $qty - 1
+        );
+        $this->cart->update($data);
+        redirect(base_url());
+    }
+
+    // Add Qty
+    function addQty($rowid, $qty){
+        $data = array (
+            'rowid' => $rowid,
+            'qty' => $qty + 1
+        );
+        $this->cart->update($data);
+        redirect(base_url());
+    }
+
+    // Get Item
+    function getItem(){
+        $rowid = $this->input->post('rowid');
+        $item  = $this->cart->get_item($rowid);
+        echo json_encode($item);
+    }
+
+    // Qty Update
+    function qtyUpdate(){
+        $rowid = $this->input->post('rowid');
+        $qty = $this->input->post('qty');
+
+        $data = array(
+            'rowid' => $rowid,
+            'qty' => $qty
+        );
+        $this->cart->update($data);
+        redirect(base_url());
+    }
+
+    // save Transaksi
+    function saveTransaksi(){
+        date_default_timezone_set("Asia/Bangkok");
+        $waktu = date('d-m-Y');
+        $total = $this->input->post('total');
+        $uang = $this->input->post('uang');
+        $kembalian = $this->input->post('kembalian');
+        $data = array('date' => $waktu,
+                        'uang' => $uang,
+                        'total' => $total,
+                        'kembalian' => $kembalian);
+        $this->M_Home->saveTransaksi($data);
+        $this->cart->destroy();
+    }
+
 }
 
 /* End of file Home.php */
