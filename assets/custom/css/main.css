@@ -29,6 +29,58 @@ a:hover{
     border-radius: 50%;
 }
 
+.name {
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.name h6{
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+.menu ul {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    text-align: left;
+    color:white;
+}
+
+.menu ul li{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    padding: 5px;
+}
+.menu ul li i{
+    font-size: 30px;
+}
+.menu ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.menu ul li:hover{
+    background-color: #FFB4B4;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.menu ul li:hover a{
+    color: #fff;
+}
+
+#keluar{
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%)
+}
 
 
 /* Right Menu */

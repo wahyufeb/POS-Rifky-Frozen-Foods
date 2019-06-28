@@ -1,33 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home - Rifky Frozen Foods</title>
-    <link rel="stylesheet" href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/custom/css/main.css">
-</head>
-<body>
-    <div class="wrapper">
-        <div class="row">
-            <div class="col-lg-1 side-menu">
-                <div class="profile">
-                    <div class="photo">
-                        <img src="<?=base_url()?>assets/photo/photo.jpg" alt="photo-profile" width="80" height="78"></div>
-                    <div class="name">
-                        <h6>Kasir 1</h6>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-11 right-menu">
                 <div class="title">
                     <div class="row justify-content-between">
                         <h1 class="col-lg-6 pink">RIFKY FROZEN FOODS</h1>
                         <div class="col-lg-3 datenow pink">
+                            <div id="today"></div>
                             <?php
                             date_default_timezone_set("Asia/Bangkok");
-                            echo date('D-M-Y')
+                            
+                            $hari = date('D');
+                            $bulan = date('M');
+                            switch ($hari) {
+                                case 'Sun':
+                                    echo "Minggu, ";
+                                    break;
+                                case 'Mon':
+                                    echo "Senin, ";
+                                    break;
+                                case 'Tue':
+                                    echo "Selasa, ";
+                                    break;
+                                case 'Wed':
+                                    echo "Rabu, ";
+                                    break;
+                                case 'Thu':
+                                    echo "Kamis, ";
+                                    break;
+                                case 'Fri':
+                                    echo "Jumat, ";
+                                    break;
+                                case 'Sat':
+                                    echo "Sabtu, ";
+                                    break;
+                                default:
+                                    echo "Hari Tidak diketahui";
+                                    break;
+                            }
+                            echo date('d ');
+                            switch ($bulan) {
+                                case 'Jan':
+                                    echo "Januari ";
+                                    break;
+                                case 'Feb':
+                                    echo "Februari ";
+                                    break;
+                                case 'Apr':
+                                    echo "April ";
+                                    break;
+                                case 'May':
+                                    echo "Mei ";
+                                    break;
+                                case 'Jun':
+                                    echo "Juni ";
+                                    break;
+                                case 'Jul':
+                                    echo "Juli ";
+                                    break;
+                                case 'Aug':
+                                    echo "Agustus ";
+                                    break;
+                                case 'Sep':
+                                    echo "September ";
+                                    break;
+                                case 'Oct':
+                                    echo "Oktober ";
+                                    break;
+                                case 'Nov':
+                                    echo "November ";
+                                    break;
+                                case 'Dec':
+                                    echo "Desember ";
+                                    break;
+                                default:
+                                    echo "Bulan Tidak diketahui";
+                                    break;
+                            }
+                            echo date('Y');
                             ?>
                         </div>
                     </div>
@@ -96,7 +143,19 @@
                                                 </a>
                                             </td>
                                             <td>Rp. <?= number_format($row['price'],0,',','.') ?></td>
-                                            <td>Rp. <?= number_format($row['subtotal'], 0,',','.') ?></td>
+                                            <td>
+                                                <?php
+                                                if($row['price'] == 3500){
+                                                    if($row['qty'] % 3 != 0){
+                                                        echo number_format($row['subtotal'],0,',','.');
+                                                    }else{
+                                                        echo number_format($row['subtotal']-$row['qty']/3*500,0,',','.');
+                                                    }
+                                                }else{
+                                                    echo number_format($row['subtotal'],0,',','.');
+                                                }
+                                                ?>
+                                            </td>
                                             <td><a href="<?=base_url()?>Home/deleteItem/<?=$row['rowid']?>"> <img src="<?=base_url()?>assets/icon/delete.png" alt="delete-icon"> </a></td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -111,7 +170,6 @@
                                         <div class="col-lg-4 text-center">
                                             <input type="hidden" id="total" value="<?=$this->cart->total()?>">
                                             <h3>Rp. <?= number_format($this->cart->total(), 0,',','.')?></h3>
-                                        </div>
                                     </div>
                                 </div>
                     </div>
@@ -120,15 +178,15 @@
                     <div class="col-lg-12">
                         <div class="bottom">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-md-4">
                                     <div class="button-action">
                                         <div class="btn" style="background-color:#FF6A6A;color:white;"> <a href="<?= base_url() ?>Home/clearCart" style="color:white;">Hapus Semua</a> </div>
                                         <div class="btn" style="background-color:#3BC36D;color:white;" >Cetak</div>
                                         <div class="btn" style="background-color:#3BC0F9;color:white;" id="simpan">Simpan</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
-                                    <div class="payment">
+                                <div class="col-lg-8 col-md-8">
+                                    <div class="payment" style='width:700px;'>
                                         <div class="row">
                                             <div class="col-lg-6" style="margin-top:-30px;">
                                             <label for="uang-pembeli">Uang Pembeli : <span id="uang" style="font-weight:bold;"></span></label>
@@ -142,12 +200,6 @@
                                             <div class="col-lg-6" style="margin-top:-30px;">
                                             <label for="kembalian">Kembalian :</label>
                                             <h2 id="kembalian" style="margin-top:-40px;"></h2>
-                                                <!-- <div class="input-group" style="margin-top:-40px;">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1" style="background-color:#FFB4B4;color:white;">Rp</span>
-                                                    </div>
-                                                    <input type="text" class="form-control"  aria-label="kembalian" aria-describedby="kembalian" id="kembalian">
-                                                    </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -181,6 +233,27 @@
     <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function(){
+            waktu();
+            function waktu(){
+                let today = new Date();
+                let h = today.getHours();
+                let m = today.getMinutes();
+                let s = today.getSeconds();
+                
+                m = checkTime(m);
+                s = checkTime(s);
+
+                $('#today').html(`<h5>${h}:${m}:${s}</h5>`);
+                let t = setTimeout(() => {
+                    waktu();
+                }, 500);
+            }
+            function checkTime(i){
+                if(i<10){
+                    i = "0" + 1
+                }
+                return i;
+            }
             function toRp(uangAnda){
                 let toRp =  uangAnda.toString().split('').reverse().join(''),
                 uang = toRp.match(/\d{1,3}/g);
@@ -236,7 +309,7 @@
                 });
             })
 
-            // Edit Qty
+            // Edit Qty in cart
             $('.editQty').on("click", function(){
                 let rowid = $(this).data('rowid');
                 $.ajax({
@@ -301,15 +374,27 @@
                 let total = $('#total-belanja').data('total');
                 let uang = $('#uang').data('uang');
                 let kembalian = $('#kembalian').data('kembalian');
+                let kategori = '';
+
+                if(uang === total){
+                    kategori = 'Uang Anda PAS';
+                }else if(uang > total){
+                    kategori = `Uang Anda Lebih Rp.${toRp(uang-total)}`;
+                }else{
+                    kategori = `Uang Anda Kurang Rp.${toRp(total-uang)}`;
+                }
                 $.ajax({
                     url:'<?=base_url()?>Home/saveTransaksi',
-                    data:`total=${total}&&uang=${uang}&&kembalian=${kembalian}`,
+                    data:`total=${total}&&uang=${uang}&&kembalian=${kembalian}&&kategori=${kategori}`,
                     type:'POST',
                     dataType:'json',
                     success:function(data){
                     }
                 })
-                document.location.href = '<?=base_url()?>'
+                alert('Berhasil');
+                setTimeout(() => {
+                    document.location.href = '<?=base_url()?>'
+                }, 500);
             })
             
         })

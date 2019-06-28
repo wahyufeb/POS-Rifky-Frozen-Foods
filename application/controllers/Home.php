@@ -8,7 +8,12 @@ class Home extends CI_Controller {
         $this->load->model('M_Home');
     }
     // templating
-    public function index(){
+    function header(){
+        $this->load->view('home/header');
+    }
+
+    function index(){
+        $this->header();
         $this->load->view('home/home');
     }
 
@@ -100,14 +105,19 @@ class Home extends CI_Controller {
     // save Transaksi
     function saveTransaksi(){
         date_default_timezone_set("Asia/Bangkok");
-        $waktu = date('d-m-Y');
+        $waktu = date('d-m-Y H:i:s');
         $total = $this->input->post('total');
         $uang = $this->input->post('uang');
         $kembalian = $this->input->post('kembalian');
-        $data = array('date' => $waktu,
+        $kategori = $this->input->post('kategori');
+        
+        $data = array('id_kasir' => 1,
+                        'date' => $waktu,
                         'uang' => $uang,
                         'total' => $total,
-                        'kembalian' => $kembalian);
+                        'kembalian' => $kembalian,
+                        'kategori' => $kategori
+                    );
         $this->M_Home->saveTransaksi($data);
         $this->cart->destroy();
     }
