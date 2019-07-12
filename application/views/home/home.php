@@ -96,7 +96,7 @@
                                             <th scope="col">Kode</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Harga</th>
-                                            <th scope="col"></th>
+                                            <th scope="col">Cart</th>
                                         </tr>
                                     </thead>
                                     <tbody id="barang">
@@ -120,7 +120,7 @@
                                             <th scope="col">Qty</th>
                                             <th scope="col">Harga</th>
                                             <th scope="col">Subtotal</th>
-                                            <th scope="col"></th>
+                                            <th scope="col">Opsi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -194,12 +194,12 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1" style="background-color:#FFB4B4;color:white;">Rp</span>
                                                     </div>
-                                                    <input type="number" class="form-control" placeholder="masukan uang pembeli" aria-label="uang_pembeli" aria-describedby="uang_pembeli" id="uang-pembeli" >
+                                                    <input type="number" class="form-control" placeholder="masukan uang pembeli" id="uang-pembeli" >
                                                     </div>
                                                 </div>
                                             <div class="col-lg-6" style="margin-top:-30px;">
                                             <label for="kembalian">Kembalian :</label>
-                                            <h2 id="kembalian" style="margin-top:-40px;"></h2>
+                                            <p style="font-weight:bolder;margin-top:-70px;font-size:30px;" id="kembalian" style="margin-top:-40px;"></p>
                                             </div>
                                         </div>
                                     </div>

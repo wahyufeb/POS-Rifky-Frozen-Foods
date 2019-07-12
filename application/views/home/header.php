@@ -29,7 +29,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?=base_url()?>Transaksi">
+                                <a href="<?=base_url()?>Pendapatan">
                                     <i class="fas fa-hand-holding-usd"></i>
                                     Pendapatan
                                 </a>

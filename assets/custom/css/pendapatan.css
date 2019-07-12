@@ -1,0 +1,33 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #fff4f4;
+}
+.top {
+	height: 200px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.data {
+	width: 300px;
+	text-align: center;
+	padding: 10px;
+	background: #fefe;
+	border-radius: 20px;
+	color: white;
+}
+
+.main {
+	background: #fff;
+}
+
+#tpendapatan {
+	background-image: linear-gradient(-90deg, blueviolet, blue);
+	margin-right: 50px;
+}
+
+#terjual {
+	background-image: linear-gradient(90deg, blueviolet, violet);
+}

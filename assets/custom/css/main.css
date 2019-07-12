@@ -1,155 +1,154 @@
 /* base css */
-.row{
-    padding: 0;
-    margin: 0;
+.row {
+	padding: 0;
+	margin: 0;
 }
-a:hover{
-    text-decoration: none;
-    color: white;
+a:hover {
+	text-decoration: none;
+	color: white;
 }
-#editQty:hover{
-    cursor: pointer;
+#editQty:hover {
+	cursor: pointer;
 }
 /* warna teks */
-.pink{
-    color: #FFB4B4
+.pink {
+	color: #ffb4b4;
 }
 
 /* Side Menu */
-.side-menu{
-    height: 100vh;
-    background-color: #333;
+.side-menu {
+	height: 100vh;
+	background-color: #333;
 }
 
-.profile{
-    margin-top: 20px;
+.profile {
+	margin-top: 20px;
 }
 
-.photo img{
-    border-radius: 50%;
+.photo img {
+	border-radius: 50%;
 }
 
 .name {
-    text-align: center;
-    margin-top: 15px;
-    color: white;
-    margin-bottom: 30px;
+	text-align: center;
+	margin-top: 15px;
+	color: white;
+	margin-bottom: 30px;
 }
 
-.name h6{
-    font-weight: lighter;
-    font-size: 15px;
+.name h6 {
+	font-weight: lighter;
+	font-size: 15px;
 }
 
 .menu ul {
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-    text-align: left;
-    color:white;
+	list-style: none;
+	display: inline-block;
+	padding: 0;
+	text-align: left;
+	color: white;
 }
 
-.menu ul li{
-    text-align: center;
-    margin-top: 20px;
-    font-size: 13px;
-    padding: 5px;
+.menu ul li {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 13px;
+	padding: 5px;
 }
-.menu ul li i{
-    font-size: 30px;
+.menu ul li i {
+	font-size: 30px;
 }
-.menu ul li a{
-    text-decoration: none;
-    color: white;
-}
-
-.menu ul li:hover{
-    background-color: #FFB4B4;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 10px;
+.menu ul li a {
+	text-decoration: none;
+	color: white;
 }
 
-.menu ul li:hover a{
-    color: #fff;
+.menu ul li:hover {
+	background-color: #ffb4b4;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 10px;
 }
 
-#keluar{
-    width: 100px;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, -50%)
+.menu ul li:hover a {
+	color: #fff;
 }
 
+#keluar {
+	width: 100px;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, -50%);
+}
 
 /* Right Menu */
-.right-menu{
-    width: 100%;
-    background-color: #FFF4F4;
+.right-menu {
+	width: 100%;
+	background-color: #fff4f4;
 }
-.right-menu .title h1{
-    font-weight: normal;
+.right-menu .title h1 {
+	font-weight: normal;
 }
-.datenow{
-    margin-top: 20px;
+.datenow {
+	margin-top: 20px;
 }
-.right-menu .title .garis{
-    border: 2px solid pink;
-}
-
-
-.data-barang,.keranjang{
-    background-color: white;
-    height: 440px;
-    border-radius: 10px;
-}
-.data-barang{
-    padding: 20px;
+.right-menu .title .garis {
+	border: 2px solid pink;
 }
 
-#cari-barang{
-    border-radius: 20px;
-    background-color: #FFB4B4;
-    color: white;
+.data-barang,
+.keranjang {
+	background-color: white;
+	height: 440px;
+	border-radius: 10px;
 }
-#cari-barang::placeholder{
-    color: white;
+.data-barang {
+	padding: 20px;
 }
 
-.daftar-barang{
-    height: 350px;
-    overflow: auto;
+#cari-barang {
+	border-radius: 20px;
+	background-color: #ffb4b4;
+	color: white;
+}
+#cari-barang::placeholder {
+	color: white;
+}
+
+.daftar-barang {
+	height: 350px;
+	overflow: auto;
 }
 
 /* keranjang */
-.data-keranjang{
-    padding: 10px;
-    position: relative;
-    height: 330px;
-    overflow: auto;
-    margin-top: 20px;
+.data-keranjang {
+	padding: 10px;
+	position: relative;
+	height: 330px;
+	overflow: auto;
+	margin-top: 20px;
 }
 
-.total{
-    width: 100%;
-    text-align: left;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #FFB4B4;
-    padding: 5px;
-    border-radius: 10px;
-    color: white;
+.total {
+	width: 100%;
+	text-align: left;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #ffb4b4;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
 }
-.total h3{
-    font-weight: normal;
+.total h3 {
+	font-weight: normal;
 }
 
-.bottom{
-    margin-top: 20px;
-    background-color: white;
-    height: 100px;
-    line-height: 100px;
-    border-radius: 10px;
+.bottom {
+	margin-top: 20px;
+	background-color: white;
+	height: 100px;
+	line-height: 100px;
+	border-radius: 10px;
 }
