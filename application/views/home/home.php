@@ -376,6 +376,7 @@
                 let kembalian = $('#kembalian').data('kembalian');
                 let kategori = '';
 
+                // Caption for calculating result
                 if(uang === total){
                     kategori = 'Uang Anda PAS';
                 }else if(uang > total){
@@ -391,7 +392,9 @@
                     success:function(data){
                     }
                 })
+                // Alert fro success
                 alert('Berhasil');
+                // redirect to home
                 setTimeout(() => {
                     document.location.href = '<?=base_url()?>'
                 }, 500);
