@@ -6,6 +6,9 @@ class Home extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('M_Home');
+        if($this->session->userdata('jabatan') != 'cashier'){
+            redirect('Login');
+        }
     }
     // templating
     function header(){
@@ -119,6 +122,12 @@ class Home extends CI_Controller {
                     );
         $this->M_Home->saveTransaksi($data);
         $this->cart->destroy();
+    }
+
+    // Logout
+    function logout(){
+        $this->session->sess_destroy();
+        redirect('Login');
     }
 
 }

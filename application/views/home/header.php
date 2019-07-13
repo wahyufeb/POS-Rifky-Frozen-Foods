@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                     <div class="out">
-                        <a href="#">
+                        <a href="<?=base_url()?>Home/logout">
                         <div class="btn btn-dark" id="keluar">
                             <img src="<?=base_url()?>assets/icon/logout.png" alt="Logout" width="25">keluar
                         </div>
