@@ -318,13 +318,14 @@
                     data:`rowid=${rowid}`,
                     dataType:'json',
                     success:function(data){
-                        let price = data.subtotal;
+                        let subtotal = data.subtotal;
+                        let tSubtotal = subtotal - data.qty/3*500;
                         $('#edit-modal')
                         .html(`     
                         <form action="<?=base_url()?>Home/qtyUpdate" method="post">
                             <div class="modal-body">
                             <h3>${data.name}</h3>
-                            <p id="subtotal">Rp. ${toRp(price)}<p>
+                            <p id="subtotal">Rp. ${toRp(tSubtotal)}<p>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Quantity</label>
                                     <input type="number" class="form-control" id="qty" name="qty" aria-describedby="qty" placeholder="Enter quantity" value="${data.qty}">
@@ -340,9 +341,16 @@
                         `);
                         $('#qty').on("keyup", function(){
                             let qty = $('#qty').val();
-                            let price = $('#price').val();                            
-                            let result = qty * price;
-                            $('#subtotal').text(`Rp.${toRp(result)}`);
+                            let price = parseInt($('#price').val());  
+                            if(price === 3500){
+                                let result = qty * price;
+                                let tResult = result - qty/3*500;
+                                console.log(tResult)
+                                $('#subtotal').text(`Rp.${toRp(tResult)}`);
+                            }else{
+                                let result = qty * price;
+                                $('#subtotal').text(`Rp.${toRp(result)}`);
+                            }                         
                         })
                     }
                 })
@@ -379,11 +387,21 @@
                 // Caption for calculating result
                 if(uang === total){
                     kategori = 'Uang Anda PAS';
+                    calculating(total, uang, kembalian, kategori)
                 }else if(uang > total){
                     kategori = `Uang Anda Lebih Rp.${toRp(uang-total)}`;
+                    calculating(total, uang, kembalian, kategori)
                 }else{
                     kategori = `Uang Anda Kurang Rp.${toRp(total-uang)}`;
+                    alert(kategori)
+                    setTimeout(() => {
+                        document.location.href = '<?=base_url()?>'
+                    }, 500);
                 }
+
+            })
+
+            const calculating=(total, uang, kembalian, kategori)=>{
                 $.ajax({
                     url:'<?=base_url()?>Home/saveTransaksi',
                     data:`total=${total}&&uang=${uang}&&kembalian=${kembalian}&&kategori=${kategori}`,
@@ -398,7 +416,7 @@
                 setTimeout(() => {
                     document.location.href = '<?=base_url()?>'
                 }, 500);
-            })
+            }
             
         })
     </script>
