@@ -125,6 +125,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $i = 0;?>
+                                        <?php $sum = 0; ?>
                                         <?php foreach($this->cart->contents() as $row ): ?>
                                         <?php $i++ ?>
                                         <tr>
@@ -148,11 +149,14 @@
                                                 if($row['price'] == 3500){
                                                     if($row['qty'] % 3 != 0){
                                                         echo number_format($row['subtotal'],0,',','.');
+                                                        $sum += $row['subtotal'];
                                                     }else{
                                                         echo number_format($row['subtotal']-$row['qty']/3*500,0,',','.');
+                                                        $sum += $row['subtotal']-$row['qty']/3*500;
                                                     }
                                                 }else{
                                                     echo number_format($row['subtotal'],0,',','.');
+                                                    $sum += $row['subtotal'];
                                                 }
                                                 ?>
                                             </td>
@@ -165,11 +169,12 @@
                                 <div class="total">
                                     <div class="row justify-content-between">
                                         <div class="col-lg-4">
-                                            <h3 id="total-belanja" data-total="<?=$this->cart->total();?>">Total </h3>
+                                            <h3 id="total-belanja" data-total="<?= $sum; ?>">Total </h3>
                                         </div>
                                         <div class="col-lg-4 text-center">
-                                            <input type="hidden" id="total" value="<?=$this->cart->total()?>">
-                                            <h3>Rp. <?= number_format($this->cart->total(), 0,',','.')?></h3>
+                                            <input type="hidden" id="total" value="<?= $sum; ?>">
+                                            <h3>Rp. <?= number_format($sum, 0,',','.')?></h3>
+                                            <h1></h1>
                                     </div>
                                 </div>
                     </div>
@@ -319,7 +324,12 @@
                     dataType:'json',
                     success:function(data){
                         let subtotal = data.subtotal;
-                        let tSubtotal = subtotal - data.qty/3*500;
+                        let tSubtotal = '';
+                        if(data.qty % 3 != 0 ){
+                            tSubtotal = subtotal;
+                        }else{
+                            tSubtotal = subtotal - data.qty/3*500;
+                        }
                         $('#edit-modal')
                         .html(`     
                         <form action="<?=base_url()?>Home/qtyUpdate" method="post">
