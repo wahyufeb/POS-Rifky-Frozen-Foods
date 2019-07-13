@@ -22,7 +22,8 @@ class M_Pendapatan extends CI_Model {
 
     function getData($start, $end){
         $this->db->where('date >= ', $start);
-        $this->db->where('date <= ', $end);        
+        $this->db->where('date <= ', $end);      
+        $this->db->order_by('date', 'desc');
         return $this->db->get('invoices')->result_array();
     }
 

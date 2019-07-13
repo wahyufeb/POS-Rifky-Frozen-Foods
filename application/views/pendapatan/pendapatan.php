@@ -41,6 +41,11 @@
                     </thead>
                     <tbody id="barang">
                         <!-- Display Data -->
+                        <?php if($transaksi == []){ ?>
+                            <tr>
+                                <td colspan="6" class="text-center"><h5 style="margin-top:100px;margin-bottom:100px;">Data Belum ada</h5></td>
+                            </tr>
+                        <?php }else{?>
                         <?php 
                             $i = 0;
                             foreach ($transaksi as $row): 
@@ -57,6 +62,7 @@
                                 </td>
                             </tr>
                         <?php endforeach; ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
