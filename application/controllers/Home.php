@@ -34,7 +34,6 @@ class Home extends CI_Controller {
     function addToCart($kode){
         $where = array('kode' => $kode);
         $getKode = $this->M_Home->getKode($where);
-        print_r($getKode);
         $hasil = $getKode[0];
         $data = array(
             'id' => $hasil['kode'],

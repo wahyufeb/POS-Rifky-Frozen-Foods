@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home - Rifky Frozen Foods</title>
     <link rel="stylesheet" href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/custom/css/main.css">
+    <link rel="stylesheet" href="<?=base_url()?>/assets/custom/css/main.css">
     <script src="https://kit.fontawesome.com/74cb3aad0c.js"></script>
 </head>
 <body>
@@ -32,12 +32,6 @@
                                 <a href="<?=base_url()?>Pendapatan">
                                     <i class="fas fa-hand-holding-usd"></i>
                                     Pendapatan
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                    Transaksi
                                 </a>
                             </li>
                         </ul>
