@@ -16,8 +16,6 @@ class M_Pendapatan extends CI_Model {
         $this->db->where('date <= ', $end); 
         $this->db->join('invoices', 'invoices.id_invoice = transaksi.id_invoice', 'left');
         return $this->db->get('transaksi')->result_array();
-        
-        
     }
 
     function getData($start, $end){
@@ -29,8 +27,7 @@ class M_Pendapatan extends CI_Model {
 
     function getInvId($id){
         $this->db->where('id_invoice', $id);
-        return $this->db->get('transaksi')->result();
-        
+        return $this->db->get('transaksi')->result();  
     }
 
 }
