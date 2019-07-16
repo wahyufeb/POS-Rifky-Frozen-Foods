@@ -7,7 +7,7 @@ class Pendapatan extends CI_Controller {
         parent::__construct();
         //Do your magic here
         $this->load->model('M_Pendapatan');
-        if($this->session->userdata('jabatan') != 'kasir'){
+        if($this->session->userdata('jabatan') != 'cashier'){
             redirect('Login');
         }
     }

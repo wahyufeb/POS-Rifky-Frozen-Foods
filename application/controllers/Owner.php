@@ -19,6 +19,8 @@ class Owner extends CI_Controller {
         $this->load->view('owner/index');
     }
 
+    // Halaman Transaksi
+    // Data Data Transaksi
     function dataTransaksi(){
         $data['transaksi'] = $this->M_Owner->dataTransaksi();
         $this->header();
@@ -29,6 +31,19 @@ class Owner extends CI_Controller {
         $id = $this->input->post('id');
         $result = $this->M_Owner->getInvId($id);
         echo json_encode($result);
+    }
+    public function getQty(){
+        $id = $this->input->post('id');
+        $totalQty = $this->M_Owner->getQty($id);
+        echo json_encode($totalQty);        
+    }
+
+    // Halaman Barang
+    // Data Data Barang
+    function dataBarang(){
+        $data['barang'] = $this->M_Owner->dataBarang();
+        $this->header();
+        $this->load->view('owner/data-Barang', $data);
     }
 }
 

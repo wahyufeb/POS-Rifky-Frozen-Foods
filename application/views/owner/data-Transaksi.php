@@ -1,7 +1,19 @@
     <div class="container">
-    <br>
-    <h2>Data Transaksi</h2>
-    <br>
+    <div class="row mt-4 mb-3">
+        <div class="col-lg-8">
+            <h2>Data Transaksi</h2>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</div>
+                </div>
+                <div class="col-lg-4">
+                        <div class="btn btn-md btn-success"><i class="far fa-file-excel"></i> Excel</div>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="data-transaksi">
         <table class="table table-hover">
             <thead class="thead-dark">
@@ -88,9 +100,21 @@ $(document).ready(function(){
                 return uang
             }
         $('.getDetails').on('click', function(){
-            let id = $(this).data('id')
-            let dataTotal = $(this).data('total')
-            $('#footer-modal').html(`<h4 class="dataTotal">Total : Rp. ${toRp(dataTotal)}</h4>`)
+            let id = $(this).data('id');
+            let dataTotal = $(this).data('total');
+            $.ajax({
+                url:'<?=base_url()?>Owner/getQty',
+                data:`id=${id}`,
+                dataType:'json',
+                type:'POST',
+                success:function(result){
+                    let tQty = result[0].totalQty
+            $('#footer-modal').html(`<div class="row" id="res">
+                                        <div class="col-md-6 offset-md-1"><h5>Total : Rp. ${toRp(dataTotal)}</h5></div>
+                                        <div class="col-md-4"><h5>Total Qty : ${tQty}</h5></div>
+                                    </div>`)
+                }
+            })
             // async get Invoices by Id
             $.ajax({
                 url:`<?=base_url()?>Owner/getInvoice`,
