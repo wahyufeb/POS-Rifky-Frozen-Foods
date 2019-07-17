@@ -23,6 +23,8 @@ class Owner extends CI_Controller {
     // Data Data Transaksi
     function dataTransaksi(){
         $data['transaksi'] = $this->M_Owner->dataTransaksi();
+        $data['pendapatan'] = $this->M_Owner->pendapatan();
+        $data['terjual'] = $this->M_Owner->terjual();
         $this->header();
         $this->load->view('owner/data-Transaksi', $data);
     }
@@ -45,6 +47,51 @@ class Owner extends CI_Controller {
         $this->header();
         $this->load->view('owner/data-Barang', $data);
     }
+
+    function tambahBarang(){
+        $data = array(
+            'kode' => $this->input->post('kode'),
+            'nama' => $this->input->post('nama_barang'),
+            'harga'=> $this->input->post('harga'),
+            'stock' => 100
+        );
+        $this->M_Owner->tambahBarang($data);
+        redirect('Owner/dataBarang');
+    }
+
+    function hapusBarang($kode){
+        $where = array('kode' => $kode);
+        $this->M_Owner->hapusBarang($kode);
+        redirect('Owner/dataBarang');
+    }
+    
+    function getBarang(){
+        $where = array('kode' => $this->input->post('kode'));
+        $getKode = $this->M_Owner->getKode($where);
+        echo json_encode($getKode);
+    }
+
+    function updateBarang(){
+        $data = array(
+            'nama' => $this->input->post('nama_barang'),
+            'harga'=> $this->input->post('harga')
+        );
+        $where = array('kode' => $this->input->post('kode'));
+        $this->M_Owner->updateBarang($data, $where);
+        redirect('Owner/dataBarang');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 /* End of file Owner.php */

@@ -18,3 +18,23 @@ body {
 #res {
 	margin-bottom: 20px;
 }
+
+/* Data Transaksi Page */
+#pendapatan,
+#terjual {
+	border: none;
+	height: 60px;
+	line-height: 40px;
+	background-color: rgb(235, 161, 24);
+}
+#terjual {
+	background-color: rgb(235, 161, 24);
+}
+
+/* Data Barang Page */
+#resultBarang {
+	background-color: #fff;
+	padding: 10px;
+	height: 400px;
+	overflow: auto;
+}

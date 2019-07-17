@@ -1,7 +1,15 @@
     <div class="container">
     <div class="row mt-4 mb-3">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <h2>Data Transaksi</h2>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-6"><div class="btn btn-lg btn-success" id="pendapatan">Pendapatan : Rp. <?= number_format($pendapatan[0]['total'],0,',','.');?></div></div>
+                <div class="col-lg-6"><div class="btn btn-lg btn-success" id="terjual">Terjual : <?= number_format($terjual[0]['tQty'],0,',','.'); ?> Pcs</div></div>
+            </div>
         </div>
         <div class="col-lg-4">
             <div class="row">
@@ -9,7 +17,7 @@
                     <div class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</div>
                 </div>
                 <div class="col-lg-4">
-                        <div class="btn btn-md btn-success"><i class="far fa-file-excel"></i> Excel</div>
+                    <div class="btn btn-md btn-success"><i class="far fa-file-excel"></i> Excel</div>
                 </div>
             </div>
         </div>
@@ -40,7 +48,10 @@
                 ?>
                     <tr>
                         <td><?= $i ?></td>
-                        <td><?= $row['date'] ?></td>
+                        <td><?php 
+                                $res = $row['date'];
+                                echo substr($res, 0, 10);
+                            ?></td>
                         <td>Rp. <?= number_format($row['uang'],0,',','.') ?></td>
                         <td>Rp. <?= number_format($row['total'],0,',','.') ?></td>
                         <td>Rp. <?= number_format($row['kembalian'],0,',','.') ?></td>
@@ -94,11 +105,11 @@
 <script>
 $(document).ready(function(){
         function toRp(uangAnda){
-                let toRp =  uangAnda.toString().split('').reverse().join(''),
-                uang = toRp.match(/\d{1,3}/g);
-                uang = uang.join('.').split('').reverse().join('');
-                return uang
-            }
+            let toRp =  uangAnda.toString().split('').reverse().join(''),
+            uang = toRp.match(/\d{1,3}/g);
+            uang = uang.join('.').split('').reverse().join('');
+            return uang
+        }
         $('.getDetails').on('click', function(){
             let id = $(this).data('id');
             let dataTotal = $(this).data('total');
