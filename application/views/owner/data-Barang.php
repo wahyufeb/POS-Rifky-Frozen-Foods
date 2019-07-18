@@ -88,6 +88,7 @@
             $('input[name="kode"]').val("")
             $('input[name="nama_barang"]').val("")
             $('input[name="harga"]').val("")
+            $('#exampleModalCenterTitle').text("Tambah Barang")
         })
         $('.btn-edit').on('click', function(){
             let kode = $(this).data('kode');
@@ -104,6 +105,7 @@
                         $('input[name="kode"]').val(res.kode)
                         $('input[name="nama_barang"]').val(res.nama)
                         $('input[name="harga"]').val(res.harga)
+                        $('#exampleModalCenterTitle').text("Detail Barang")
                     }
                 }
             });

@@ -14,11 +14,11 @@
         <div class="col-lg-4">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</div>
+                    <div class="btn btn-md btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-print"></i> Print</div>
                 </div>
-                <div class="col-lg-4">
+                <!-- <div class="col-lg-4">
                     <div class="btn btn-md btn-success"><i class="far fa-file-excel"></i> Excel</div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -97,6 +97,62 @@
         </div>
     </div>
     </div>
+
+<!-- Modal Print -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Print Data Transaksi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="<?= base_url() ?>Owner/printTransaksi" method="post">
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input type="hidden" value="<?= date("d-M-Y"); ?>" name="reportdate">
+                        <label for="filename">File name</label>
+                        <input type="text" class="form-control" id="filename" placeholder="Enter file name" name="filename"  required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label for="street">Set Size</label>
+                    <select class="form-control" id="setsize" name="setsize" required>
+                        <option value="" selected disabled>- Set Size -</option>  
+                        <option value="A3">A3</option>
+                        <option value="A4">A4</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <label for="street">Set Orientation</label>
+                    <select class="form-control" id="setorientation" name="setorientation" required>
+                        <option value="" selected disabled>- Select one -</option>  
+                        <option value="landscape">Landscape</option>
+                        <option value="portrait">Portrait</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <label for="start">Mulai Tanggal</label>
+                    <input type="date" class="form-control" id="start_date" name="start_date">
+                </div>
+                <div class="col-lg-6">
+                    <label for="end">Sampai Tanggal</label>
+                    <input type="date" class="form-control" id="end_date" name="end_date">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+
 
 </body>
 <script src="<?=base_url()?>assets/jquery/jquery.js"></script>

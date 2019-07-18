@@ -3,9 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Owner extends CI_Model {
 
-    // Data Transaksi
     function dataTransaksi(){
         $this->db->order_by('date', 'desc');
+        return $this->db->get('invoices')->result_array();
+    }
+
+    // Data Transaksi
+    function allTransaksi(){
+        $this->db->order_by('date', 'desc');
+        $this->db->join('transaksi', 'transaksi.id_invoice = invoices.id_invoice', 'left');
+        return $this->db->get('invoices')->result_array();
+    }
+    // Data Transaksi By Date
+    function allTransaksiByDate($start, $end){
+        $this->db->order_by('date', 'desc');
+        $this->db->where('date >= ', $start);
+        $this->db->where('date <= ', $end); 
+        $this->db->join('transaksi', 'transaksi.id_invoice = invoices.id_invoice', 'left');
         return $this->db->get('invoices')->result_array();
     }
     
@@ -25,12 +39,32 @@ class M_Owner extends CI_Model {
         $this->db->select('SUM(total) as total');
         return $this->db->get('invoices')->result_array();
     }
+    // pendapatan
+    // pendapatan berdasarkan waktu
+    function pendapatanByDate($start, $end){
+        $this->db->select('SUM(total) as total');
+        $this->db->where('date >= ', $start);
+        $this->db->where('date <= ', $end); 
+        return $this->db->get('invoices')->result_array();
+    }
+
+    // Total Transaksi
+    function totalTrans(){
+        return $this->db->get('transaksi')->num_rows();
+    } 
+    // Total Transaksi berdasarkan waktu
+    function totalTransByDate($start, $end){
+        $this->db->where('date >= ', $start);
+        $this->db->where('date <= ', $end); 
+        $this->db->join('transaksi', 'transaksi.id_invoice = invoices.id_invoice', 'left');
+        return $this->db->get('invoices')->num_rows();
+    } 
+
     // terjual
     function terjual(){
         $this->db->select('SUM(qty) as tQty');
         return $this->db->get('transaksi')->result_array();
     }
-
 
 
 
