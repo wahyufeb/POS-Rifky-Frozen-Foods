@@ -67,9 +67,6 @@ class M_Owner extends CI_Model {
     }
 
 
-
-
-
     //////////////////////////////////////////////////////////////
     // Data Barang
     function dataBarang(){
@@ -94,6 +91,28 @@ class M_Owner extends CI_Model {
         $this->db->where($where);
         $this->db->update('barang', $data);
     }
+
+    function totalBarang(){
+        return $this->db->get('barang')->num_rows();
+    }
+
+    //////////////////////////////////////////////////////////////
+    // Data Akun
+    function dataAkun(){
+        $this->db->where_not_in('jabatan', 'owner');      
+        return $this->db->get('users')->result_array();
+    }
+
+    function hapusAkun($where){
+        $this->db->where($where);
+        $this->db->delete('users');
+    }
+
+    function addAkun($data){
+        $this->db->insert('users', $data);
+    }
+
+
 
 }
 

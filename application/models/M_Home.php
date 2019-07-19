@@ -24,13 +24,33 @@ class M_Home extends CI_Model {
         $this->db->insert('invoices', $data);
         $id_inv = $this->db->insert_id('invoices');
         foreach ($this->cart->contents() as $row) {
-            $transaksi = array(
-                'id_invoice'=> $id_inv,
-                'kode' => $row['id'],
-                'nama_barang' => $row['name'],
-                'qty' => $row['qty'],
-                'subtotal' => $row['subtotal']
-            );
+            if($row['price'] == 3500){
+                    if($row['qty'] % 3 != 0){
+                        $transaksi = array(
+                            'id_invoice'=> $id_inv,
+                            'kode' => $row['id'],
+                            'nama_barang' => $row['name'],
+                            'qty' => $row['qty'],
+                            'subtotal' => $row['subtotal']
+                        );
+                    }else{
+                        $transaksi = array(
+                            'id_invoice'=> $id_inv,
+                            'kode' => $row['id'],
+                            'nama_barang' => $row['name'],
+                            'qty' => $row['qty'],
+                            'subtotal' => $row['subtotal']-$row['qty']/3*500
+                        );
+                    }
+            }else{
+                $transaksi = array(
+                    'id_invoice'=> $id_inv,
+                    'kode' => $row['id'],
+                    'nama_barang' => $row['name'],
+                    'qty' => $row['qty'],
+                    'subtotal' => $row['subtotal']
+                );
+            }
             $this->db->insert('transaksi', $transaksi);
         }
         
