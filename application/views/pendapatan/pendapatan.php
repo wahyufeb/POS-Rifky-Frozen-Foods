@@ -128,12 +128,13 @@
                     for (let i = 0; i < data.length; i++) {
                         let no = i+1;
                         const res = data[i];
-                        resData += `
+                        const qty = res.qty;
+                            resData += `
                             <tr>
                                 <td>${no}</td>
                                 <td>${res.kode}</td>
                                 <td>${res.nama_barang}</td>
-                                <td>${res.qty}</td>
+                                <td>${qty}</td>
                                 <td>Rp. ${toRp(res.subtotal)}</td>
                             </tr>
                         `;

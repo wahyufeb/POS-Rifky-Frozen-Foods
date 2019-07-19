@@ -15,6 +15,7 @@ class Owner extends CI_Controller {
     function header(){
         $this->load->view('owner/header');
     }
+    
     public function index(){
         $this->header();
         $this->load->view('owner/index');
@@ -35,6 +36,7 @@ class Owner extends CI_Controller {
         $result = $this->M_Owner->getInvId($id);
         echo json_encode($result);
     }
+
     public function getQty(){
         $id = $this->input->post('id');
         $totalQty = $this->M_Owner->getQty($id);
@@ -61,7 +63,7 @@ class Owner extends CI_Controller {
         $endDate = $e[2]."-".$e[1]."-".$e[0];
         // Set Time
         date_default_timezone_set('Asia/Jakarta');
-        $dateReport = date('d-m-Y');
+        $dateReport = date('D-M-Y');
         $filename       = $this->input->post('filename');
         $setSize        = $this->input->post('setsize');
         $setOrientation = $this->input->post('setorientation');
@@ -76,7 +78,8 @@ class Owner extends CI_Controller {
             // Total Transaksi
             $data['totalTransaksi'] = $this->M_Owner->totalTransByDate($startDate, $endDate);
             $data['transaksi'] = $this->M_Owner->allTransaksiByDate($startDate, $endDate);
-            // print_r($data['transaksi']);
+
+            // DOMPDF
             $html = $this->load->view('owner/transaksi_print', $data, true);
             $dompdf->load_html($html);
             $dompdf->set_paper($setSize, $setOrientation);
@@ -89,6 +92,8 @@ class Owner extends CI_Controller {
             // Total Transaksi
             $data['totalTransaksi'] = $this->M_Owner->totalTrans();
             $data['transaksi'] = $this->M_Owner->allTransaksi();
+ 
+            // DOMPDF						
             $html = $this->load->view('owner/transaksi_print', $data, true);
             $dompdf->load_html($html);
             $dompdf->set_paper($setSize, $setOrientation);
@@ -97,6 +102,9 @@ class Owner extends CI_Controller {
             $dompdf->stream($filename.'_'.$dateReport.'.pdf', array("Attachment" => false));
         }
     }
+
+
+
 
     // Halaman Barang
     // Data Data Barang
@@ -139,13 +147,54 @@ class Owner extends CI_Controller {
         redirect('Owner/dataBarang');
     }
 
+    function printBarang(){
+        date_default_timezone_set('Asia/Jakarta');
+        $dateReport = date('D-M-Y');
+        $filename       = $this->input->post('filename');
+        $setSize        = $this->input->post('setsize');
+        $setOrientation = $this->input->post('setorientation');
+        
+        def("DOMPDF_ENABLE_REMOTE", false);
+        $dompdf = new Dompdf();
+        $data['judul']   = "Laporan Data Barang";
+        $data['totalBarang'] = $this->M_Owner->totalBarang();
+        $data['barang'] = $this->M_Owner->dataBarang();
+
+        // DOMPDF
+        $html = $this->load->view('owner/barang_print', $data, true);
+        $dompdf->load_html($html);
+        $dompdf->set_paper($setSize, $setOrientation);
+        $dompdf->render();
+        $pdf = $dompdf->output();
+        $dompdf->stream($filename.'_'.$dateReport.'.pdf', array("Attachment" => false));
+    }
 
 
+    // Halaman Akun
+    // Data Akun
+    function dataAkun(){
+        $data['akun'] = $this->M_Owner->dataAkun();
+        $this->header();
+        $this->load->view('owner/data-Akun', $data);
+    }
 
+    function hapusAkun($id){
+        $where = array('id_user' => $id);
+        $this->M_Owner->hapusAkun($where);
+        redirect('Owner/dataAkun');
+    }
 
-
-
-
+    function addAkun(){
+        $data = array(
+            'username' => $this->input->post('username'),
+            'nama' => $this->input->post('nama'),
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'tempat' => $this->input->post('tempat'),
+            'jabatan' => $this->input->post('jabatan')
+        );
+        $this->M_Owner->addAkun($data);
+        redirect('Owner/dataAkun');
+    }
 
 
 

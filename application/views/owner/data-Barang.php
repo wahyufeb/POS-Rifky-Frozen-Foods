@@ -3,9 +3,16 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="jumbotron" style="padding:15px;">
-                    <h1 class="display-4">Data Barang</h1>
+                    <h3 class="display-6">Data Barang</h3>
                     <p class="lead">Daftar barang barang Rifky Frozen Foods</p>
-                    <a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target=".bd-example-modal-sm" id="input-barang" style="color:white;">Masukan Barang</a>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target=".bd-example-modal-sm" id="input-barang" style="color:white;">Masukan Barang</a>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="btn btn-md btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-print"></i> Print</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -14,7 +21,8 @@
                 <table class="table table-hover table-bordered " bgcolor="white">
                     <thead class="thead-dark" style="text-align:center;">
                         <tr>
-                            <th width="80px;">Kode</th>
+                            <th width="80px;">No</th>
+                            <th>Kode</th>
                             <th>Nama Barang</th>
                             <th>Harga</th>
                             <th>Stok</th>
@@ -27,6 +35,7 @@
                         <?php $i++; ?>
                             <tr>
                                 <td align="center"><?=$i;?></td>
+                                <td><?= $row['kode'] ?></td>
                                 <td><?= $row['nama'] ?></td>
                                 <td>Rp. <?= number_format($row['harga'],0,',','.') ?></td>
                                 <td><?= number_format($row['stok']) ?></td>
@@ -76,6 +85,53 @@
     </div>
 </div>
 </div>
+
+<!-- Modal Print -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Print Data Transaksi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="<?= base_url() ?>Owner/printBarang" method="post">
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input type="hidden" value="<?= date("d-M-Y"); ?>" name="reportdate">
+                        <label for="filename">File name</label>
+                        <input type="text" class="form-control" id="filename" placeholder="Enter file name" name="filename"  required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label for="street">Set Size</label>
+                    <select class="form-control" id="setsize" name="setsize" required>
+                        <option value="" selected disabled>- Set Size -</option>  
+                        <option value="A3">A3</option>
+                        <option value="A4">A4</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <label for="street">Set Orientation</label>
+                    <select class="form-control" id="setorientation" name="setorientation" required>
+                        <option value="" selected disabled>- Select one -</option>  
+                        <option value="landscape">Landscape</option>
+                        <option value="portrait">Portrait</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
 </body>
 <script src="<?=base_url()?>assets/jquery/jquery.js"></script>
 <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -105,7 +161,7 @@
                         $('input[name="kode"]').val(res.kode)
                         $('input[name="nama_barang"]').val(res.nama)
                         $('input[name="harga"]').val(res.harga)
-                        $('#exampleModalCenterTitle').text("Detail Barang")
+                        $('#exampleModalCenterTitle').text("Edit Barang")
                     }
                 }
             });

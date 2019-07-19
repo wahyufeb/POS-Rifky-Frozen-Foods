@@ -27,7 +27,7 @@
             <a class="nav-link" href="<?=base_url()?>Owner/dataBarang">Barang</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?=base_url()?>Owner/akun">Akun</a>
+            <a class="nav-link" href="<?=base_url()?>Owner/dataAkun">Akun</a>
         </li>
         </ul>
         <span class="navbar-text">

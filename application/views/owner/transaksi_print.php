@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Print Products</title>
+    <title>Print Transaksi</title>
     <!-- Bootstrap -->
     <?php $a =  $_SERVER["DOCUMENT_ROOT"]."/POS-Rifky-Frozen-Foods/assets/"?>
     <script src="<?=$a?>jquery/jquery.js"></script>
@@ -98,7 +98,6 @@
     <tbody>
     <?php 
         $i = 0;
-        $sum = 0;
         foreach ($transaksi as $row): 
         $i++;
     ?>
@@ -108,13 +107,12 @@
             <td><?=$row['kode'];?></td>
             <td><?= $row['nama_barang'] ?></td>
             <td><?= number_format($row['qty'],0,',','.') ?></td>
-            <td>Rp. <?= number_format($row['subtotal'],0,',','.') ?></td>
+            <td>Rp. <?= number_format($row['subtotal'],0,',','.');?></td>
         </tr>
-        <?php $sum += $row['subtotal']; ?>
     <?php endforeach; ?>
     </tbody>
     </table>
-    <h2>Total : <?=$sum;?></h2>
+    <h5 style="text-align:right;">Total : Rp. <?= number_format($pendapatan[0]['total'],0,',','.'); ?></h5>
 </body>
 <!-- bootstrap -->
 </html>
