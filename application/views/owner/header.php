@@ -36,7 +36,7 @@
         </li>
         </ul>
         <span class="navbar-text">
-        Owner
+            <a style="text-decoration:none;" href="<?=base_url()?>Owner/logout">Logout</a>
         </span>
     </div>
     </nav>

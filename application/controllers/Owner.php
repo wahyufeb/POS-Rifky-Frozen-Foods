@@ -199,6 +199,13 @@ class Owner extends CI_Controller {
     }
 
 
+    // Logout
+    function logout(){
+        $this->session->sess_destroy();
+        redirect('Login');
+    }
+
+
 
 
 }
