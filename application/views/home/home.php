@@ -81,7 +81,7 @@
 						<hr class="garis pink">
 				</div>
 				<div class="row" id="data">
-						<div class="col-lg-5">
+						<div class="col-lg-6">
 								<div class="data-barang">
 										<div class="cari-barang">
 												<div class="input-group flex-nowrap">
@@ -106,7 +106,7 @@
 										</div>
 								</div>
 						</div>
-						<div class="col-lg-7 keranjang">
+						<div class="col-lg-6 keranjang">
 								<h6 style="float:right;margin-top:10px;"><?=$this->cart->total_items()?> Barang</h6>
 								<img src="<?=base_url()?>assets/icon/icon.png" alt="shopping-cart" width="40" style="float:right;">
 										<h4 class="pink">Keranjang Belanja</h4>

@@ -17,8 +17,10 @@ class Owner extends CI_Controller {
     }
     
     public function index(){
+        $data['chartRevenue'] = $this->M_Owner->dataTransaksi();
+        $data['chartBarangLaku'] = $this->M_Owner->allTransaksi();
         $this->header();
-        $this->load->view('owner/index');
+        $this->load->view('owner/index', $data);
     }
 
     // Halaman Transaksi

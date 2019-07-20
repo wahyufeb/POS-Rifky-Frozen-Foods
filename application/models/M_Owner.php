@@ -112,6 +112,9 @@ class M_Owner extends CI_Model {
         $this->db->insert('users', $data);
     }
 
+    //////////////////////////////////////////////////////////////
+    // Chart
+
 
 
 }

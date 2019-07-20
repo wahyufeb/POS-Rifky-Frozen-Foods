@@ -19,6 +19,13 @@ body {
 	margin-bottom: 20px;
 }
 
+/* Home Page */
+.res-chart {
+	background-color: #fff;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
 /* Data Transaksi Page */
 #pendapatan,
 #terjual {

@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>/assets/custom/css/owner.css">
-    <script src="https://kit.fontawesome.com/74cb3aad0c.js"></script>
+    <link rel="stylesheet" href="<?=base_url()?>assets/custom/css/owner.css">
+    <!-- Chart JS-->
+    <link rel="stylesheet" href="<?=base_url()?>assets/chartjs/Chart.min.css">
+    <script src="<?=base_url()?>assets/chartjs/Chart.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?=base_url()?>assets/fontawesome/all.min.css">
+    <script src="<?=base_url()?>assets/fontawesome/all.min.js"></script>
     <title>Halaman Owner</title>
 </head>
 <body>
