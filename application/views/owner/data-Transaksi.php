@@ -7,8 +7,14 @@
     <div class="row mb-2">
         <div class="col-lg-8">
             <div class="row">
-                <div class="col-lg-6"><div class="btn btn-lg btn-success" id="pendapatan">Pendapatan : Rp. <?= number_format($pendapatan[0]['total'],0,',','.');?></div></div>
-                <div class="col-lg-6"><div class="btn btn-lg btn-success" id="terjual">Terjual : <?= number_format($terjual[0]['tQty'],0,',','.'); ?> Pcs</div></div>
+                <div class="col-lg-6">
+                    <div class="btn btn-lg btn-success" id="pendapatan">Pendapatan : Rp. <?= number_format($pendapatan[0]['total'],0,',','.');?>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="btn btn-lg btn-success" id="terjual">Terjual : <?= number_format($terjual[0]['tQty'],0,',','.'); ?> Pcs
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-4">

@@ -22,6 +22,7 @@ class Login extends CI_Controller {
                 );
                 $this->session->set_userdata($data);
                 if($this->session->userdata('jabatan') == 'owner'){
+                    $this->session->set_flashdata('halloowner', 'Selamat Datang');
                     redirect('Owner');
                 }elseif($this->session->userdata('jabatan') == 'supplier'){
                     redirect('Supplier');

@@ -21,8 +21,8 @@
                         <img src="<?=base_url()?>assets/photo/photo.jpg" alt="photo-profile" width="80" height="78">
                     </div> -->
                     <div class="name">
-                        <h4>Kasir 1</h4>
-                        <h6>Pasar Mandiraja</h6>
+                        <h4 style="font-size:26px;"><?=$sayHello[0]['nama']?></h4>
+                        <h6><?=$sayHello[0]['tempat']?></h6>
                     </div>
                     <div class="menu">
                         <ul>                            

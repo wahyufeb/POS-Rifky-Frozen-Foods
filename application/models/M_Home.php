@@ -56,6 +56,12 @@ class M_Home extends CI_Model {
         
     }
 
+    // Get User Id
+    function getUser($where){
+        $this->db->where($where);
+        return $this->db->get('users')->result_array();
+    }
+
 }
 
 /* End of file M_Home.php */

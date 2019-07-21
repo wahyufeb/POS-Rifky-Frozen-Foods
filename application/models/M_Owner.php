@@ -112,8 +112,10 @@ class M_Owner extends CI_Model {
         $this->db->insert('users', $data);
     }
 
-    //////////////////////////////////////////////////////////////
-    // Chart
+    function getUser($where){
+        $this->db->where($where);
+        return $this->db->get('users')->result_array();
+    }
 
 
 

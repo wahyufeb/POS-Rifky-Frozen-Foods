@@ -17,8 +17,23 @@ class Owner extends CI_Controller {
     }
     
     public function index(){
+        // date today
+        $start = date('d-m-Y 00:00:00');
+        $end = date('d-m-Y 24:00:00');
+
+        // Data
+        $data['tPendapatan'] = $this->M_Owner->pendapatan();
+        $data['tPendapatanToday'] = $this->M_Owner->pendapatanByDate($start, $end);
+        $data['tBrang'] = $this->M_Owner->totalBarang();
+        $data['terjual'] = $this->M_Owner->terjual();
+        
+        // Hello
+        $where = array('id_user' => $this->session->userdata('id_user'));
+        $data['sayHello'] = $this->M_Owner->getUser($where);
+
+        // Chart
         $data['chartRevenue'] = $this->M_Owner->dataTransaksi();
-        $data['chartBarangLaku'] = $this->M_Owner->allTransaksi();
+
         $this->header();
         $this->load->view('owner/index', $data);
     }

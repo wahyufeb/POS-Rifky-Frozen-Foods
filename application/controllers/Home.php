@@ -12,7 +12,9 @@ class Home extends CI_Controller {
     }
     // templating
     function header(){
-        $this->load->view('home/header');
+        $where = array('id_user' => $this->session->userdata('id_user'));
+        $data['sayHello'] = $this->M_Home->getUser($where);
+        $this->load->view('home/header', $data);
     }
 
     function index(){

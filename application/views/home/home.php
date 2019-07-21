@@ -107,8 +107,8 @@
 								</div>
 						</div>
 						<div class="col-lg-6 keranjang">
-								<h6 style="float:right;margin-top:10px;"><?=$this->cart->total_items()?> Barang</h6>
-								<img src="<?=base_url()?>assets/icon/icon.png" alt="shopping-cart" width="40" style="float:right;">
+							<h6 style="float:right;margin-top:10px;"><?=$this->cart->total_items()?> Barang</h6>
+							<img src="<?=base_url()?>assets/icon/icon.png" alt="shopping-cart" width="40" style="float:right;">
 										<h4 class="pink">Keranjang Belanja</h4>
 										<div id="coba"></div>
 										<div class="data-keranjang">

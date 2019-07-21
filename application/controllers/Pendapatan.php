@@ -6,6 +6,7 @@ class Pendapatan extends CI_Controller {
     public function __construct(){
         parent::__construct();
         //Do your magic here
+        $this->load->model('M_Home');
         $this->load->model('M_Pendapatan');
         if($this->session->userdata('jabatan') != 'cashier'){
             redirect('Login');
@@ -13,7 +14,9 @@ class Pendapatan extends CI_Controller {
     }
     
     public function header(){
-        $this->load->view('home/header');
+        $where = array('id_user' => $this->session->userdata('id_user'));
+        $data['sayHello'] = $this->M_Home->getUser($where);
+        $this->load->view('home/header', $data);
     }
 
     public function index(){
